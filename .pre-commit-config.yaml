@@ -16,4 +16,4 @@ repos:
     - id: terraform_tflint
       args:
         - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-      exclude: '/code_snippets/.*'
+      exclude: 'code_snippets/.*'
