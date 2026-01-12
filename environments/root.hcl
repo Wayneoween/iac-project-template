@@ -20,22 +20,6 @@ inputs = merge(
   local.environment_inputs
 )
 
-# Use ~/.cache/terraform/plugin-cache for storing providers. This can be overriden by setting TF_PLUGIN_CACHE_DIR before calling terragrunt.
-# The directory is created if not existent
-terraform {
-  extra_arguments "set environment variable for cache directory" {
-    commands = ["init"]
-    env_vars = {
-      TF_PLUGIN_CACHE_DIR = get_env("TF_PLUGIN_CACHE_DIR", "${get_env("HOME")}/.cache/terraform/plugin-cache")
-    }
-  }
-
-  before_hook "create plugin cache directory if absent" {
-    commands = ["init"]
-    execute  = ["bash", "-c", "test -d \"$TF_PLUGIN_CACHE_DIR\" || mkdir -p \"$TF_PLUGIN_CACHE_DIR\""]
-  }
-}
-
 generate "root_variables" {
   path      = "root_variables_generated.tf"
   if_exists = "overwrite_terragrunt"

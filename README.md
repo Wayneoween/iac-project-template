@@ -48,10 +48,6 @@ Generated files are named "*_generated.tf", which is already excluded from git.
 
 The templates for generated code live in `code_snippets` and can be included with `file()` or `templatefile()`.
 
-## Terraform plugin cache dir
-
-The environment variable `TF_PLUGIN_CACHE_DIR` is set to `~/.cache/terraform/plugin-cache` by default and can be overwritten by setting the variable otherwise. The cache directory is created if not existent. This suppresses a warning raised by terraform.
-
 ## Use OpenTofu
 
 When using OpenTofu add the following to the `terraform` section.
