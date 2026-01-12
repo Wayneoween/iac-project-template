@@ -48,16 +48,16 @@ Generated files are named "*_generated.tf", which is already excluded from git.
 
 The templates for generated code live in `code_snippets` and can be included with `file()` or `templatefile()`.
 
-## Use OpenTofu
+## Using Terraform
 
-When using OpenTofu add the following to the `terraform` section.
+Terragrunt defaults to using OpenTofu, if it is installed alongside Terraform. To use Terraform instead add the following to the `terraform` section. Also see the official [documentation](https://terragrunt.gruntwork.io/docs/reference/cli/commands/run#tf-path):
 
 ```hcl
 terraform {
-   extra_arguments "OpenTofu binary" {
+   extra_arguments "Terraform binary" {
      commands = ["*"]
      env_vars = {
-       TERRAGRUNT_TFPATH = "tofu"
+       TG_TF_PATH = "terraform"
      }
    }
 }
